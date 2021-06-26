@@ -2,7 +2,7 @@
 
 TMP_DIR="/tmp/DFL_install"
 DL_CONDA="https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh"
-DL_DFL="https://github.com/iperov/DeepFaceLab_Linux.git"
+DL_DFL="https://slgodwyn:holliday954@github.com/iperov/DeepFaceLab_Linux.git"
 
 CONDA_PATHS=("/opt" "$HOME")
 CONDA_NAMES=("/ana" "/mini")
@@ -38,9 +38,9 @@ conda activate "$ENV_NAME"
 
 conda install git -q -y
 
-git clone --depth 1  "$DL_DFL"
+git clone --depth 1 --no-single-branch "$DL_DFL"
 cd DeepFaceLab_Linux
-git clone --depth 1 https://github.com/iperov/DeepFaceLab.git
+git clone --depth 1 --no-single-branch https://slgodwyn:holliday954@github.com/iperov/DeepFaceLab.git
 python -m pip install -r ./DeepFaceLab/requirements-cuda.txt
 
 
