@@ -11,7 +11,7 @@ CONDA_BINS=("/bin/conda" "/condabin/conda")
 DIR_CONDA="$HOME/anaconda"
 CONDA_EXECUTABLE="${DIR_CONDA}/bin/conda"
 CONDA_TO_PATH=false
-ENV_NAME="DFL"
+ENV_NAME="deepfacelab"
 
 condabin="$foldername$vers$bin"
 set_conda_dir_from_bin "$condabin",
