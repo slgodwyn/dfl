@@ -9,7 +9,7 @@ apt-get install -y unzip
 pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)
 useradd -m -p "$pass" treewyn
 usermod -aG sudo treewyn
-su - treewyn
+# su - treewyn
 
 TMP_DIR="/tmp/DFL_install"
 DL_CONDA="https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh"
