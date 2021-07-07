@@ -73,7 +73,7 @@ mkdir $DFL_WORKSPACE/model
 
 cd $DFL_WORKSPACE/model
 wget https://github.com/chervonij/DFL-Colab/releases/download/GenericXSeg/GenericXSeg.zip
-unzip GenericXseg.zip
+unzip GenericXseg.zip -d $DFL_WORKSPACE/model/
 cd $HOME/DeepFaceLab_Linux
 
 
