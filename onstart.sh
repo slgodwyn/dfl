@@ -71,6 +71,8 @@ mkdir $DFL_WORKSPACE/model
 cd $DFL_WORKSPACE/model
 wget https://github.com/chervonij/DFL-Colab/releases/download/GenericXSeg/GenericXSeg.zip
 unzip GenericXSeg.zip -d $DFL_WORKSPACE/model/
-cd /home/treewyn/DeepFaceLab_Linux/scripts
+cd $DFL_WORKSPACE
 
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1wpN2dQ00gmaaRVa_tThdEKa4KWBFI6ET' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1wpN2dQ00gmaaRVa_tThdEKa4KWBFI6ET" -O data_src.mp4 && rm -rf /tmp/cookies.txt
 
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1ZNUGkGttNt0VYD6CCUTIwsKDg9xIySU_' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1ZNUGkGttNt0VYD6CCUTIwsKDg9xIySU_" -O data_dst.mp4 && rm -rf /tmp/cookies.txt
