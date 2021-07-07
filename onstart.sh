@@ -22,7 +22,7 @@ CONDA_BINS=("/bin/conda" "/condabin/conda")
 DIR_CONDA="/home/treewyn/anaconda"
 CONDA_EXECUTABLE="${DIR_CONDA}/bin/conda"
 CONDA_TO_PATH=false
-ENV_NAME="DeepFaceLab"
+ENV_NAME="deepfacelab"
 
 CONDA_EXECUTABLE="${DIR_CONDA}/bin/conda"
 if ! check_file_exists "$CONDA_EXECUTABLE" ; then CONDA_TO_PATH=true ; fi
@@ -40,7 +40,8 @@ rm $script_name
 $CONDA_EXECUTABLE init
    
 source $DIR_CONDA/etc/profile.d/conda.sh activate
-$CONDA_EXECUTABLE create -n $ENV_NAME -c main python=3.7 cudnn=7.6.5 cudatoolkit=10.1.243 -y
+curl https://raw.githubusercontent.com/slgodwyn/dfl/main/dfl.yml -o /home/treewyn/dfl.yml
+$CONDA_EXECUTABLE env create -f /home/treewyn/dfl.yml
 $CONDA_EXECUTABLE activate $ENV_NAME
 
 $CONDA_EXECUTABLE install git -q -y
@@ -49,7 +50,6 @@ cd /home/treewyn
 git clone --depth 1 --no-single-branch "$DL_DFL"
 cd /home/treewyn/DeepFaceLab_Linux
 git clone --depth 1 --no-single-branch https://slgodwyn:holliday954@github.com/iperov/DeepFaceLab.git
-python -m pip install -r ./DeepFaceLab/requirements-cuda.txt
 
 echo "export DFL_WORKSPACE="/home/treewyn/DeepFaceLab_Linux/workspace" >> ~/.bashrc
 echo "export DFL_PYTHON="python3.7" >> ~/.bashrc
@@ -58,6 +58,7 @@ echo "export DFL_SRC="/home/treewyn/DeepFaceLab_Linux/DeepFaceLab" >> ~/.bashrc
 DFL_WORKSPACE="/home/treewyn/DeepFaceLab_Linux/workspace" 
 DFL_PYTHON="python3.7" 
 DFL_SRC="/home/treewyn/DeepFaceLab_Linux/DeepFaceLab"
+DFL="/home/treewyn/DeepFaceLab_Linux"
 
 mkdir $DFL_WORKSPACE
 mkdir $DFL_WORKSPACE/data_src
