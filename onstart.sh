@@ -22,7 +22,7 @@ CONDA_BINS=("/bin/conda" "/condabin/conda")
 DIR_CONDA="/home/treewyn/anaconda"
 CONDA_EXECUTABLE="${DIR_CONDA}/bin/conda"
 CONDA_TO_PATH=false
-ENV_NAME="deepfacelab"
+ENV_NAME="DeepFaceLab"
 
 CONDA_EXECUTABLE="${DIR_CONDA}/bin/conda"
 if ! check_file_exists "$CONDA_EXECUTABLE" ; then CONDA_TO_PATH=true ; fi
@@ -53,11 +53,11 @@ python -m pip install -r ./DeepFaceLab/requirements-cuda.txt
 
 echo "export DFL_WORKSPACE="/home/treewyn/DeepFaceLab_Linux/workspace" >> ~/.bashrc
 echo "export DFL_PYTHON="python3.7" >> ~/.bashrc
-echo "export DFL_SRC="/home/treewyn/DeepFaceLab_Linux/deepfacelab" >> ~/.bashrc
+echo "export DFL_SRC="/home/treewyn/DeepFaceLab_Linux/DeepFaceLab" >> ~/.bashrc
 
 DFL_WORKSPACE="/home/treewyn/DeepFaceLab_Linux/workspace" 
 DFL_PYTHON="python3.7" 
-DFL_SRC="/home/treewyn/DeepFaceLab_Linux/deepfacelab"
+DFL_SRC="/home/treewyn/DeepFaceLab_Linux/DeepFaceLab"
 
 mkdir $DFL_WORKSPACE
 mkdir $DFL_WORKSPACE/data_src
