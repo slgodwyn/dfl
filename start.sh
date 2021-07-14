@@ -28,3 +28,5 @@ else
 fi
 
 /etc/init.d/ssh restart
+
+bash /startup.sh
