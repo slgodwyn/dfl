@@ -1,0 +1,104 @@
+#!/bin/bash
+
+apt install -y openssh-server
+apt install -y ufw
+/etc/init.d/ssh start
+/etc/init.d/ufw start
+ufw allow ssh
+ufw allow http
+ufw allow 22/tcp
+ufw allow 5900/tcp
+ufw allow 6080/tcp
+FILE=/etc/ssh/sshd_config
+DIR=/etc/ssh
+
+if [ -d "$DIR" ];
+then
+	echo "/etc/ssh exists"
+else
+	mkdir $DIR
+fi
+
+if [ -f "$FILE" ];
+then
+	sed 's/#\?\(PermitRootLogin\s*\).*$/\1 yes/' $FILE > temp.txt
+	mv -f temp.txt $FILE
+else
+	touch $FILE
+	echo "PermitRootLogin yes" > $FILE
+fi
+
+SDIR=/root/.ssh
+
+if [ -d "$SDIR" ];
+then
+	echo "/root/.ssh exists"
+else
+	mkdir $SDIR
+fi
+
+cat << EOF >  /root/.ssh/id_rsa 
+-----BEGIN OPENSSH PRIVATE KEY-----
+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
+-----END OPENSSH PRIVATE KEY----- 
+EOF
+
+cat << EOF > /root/.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDCf+QTpWgJpZ1GJdHUw+j3MHsuGYTTq072vXrdvKQpxPWftbkYIbdSYLPRsW0IJbxqXHkwflMJ+aAzboTMTnMtxgVFqkbxZ4a/1LaKtc4+c1IGS5aYOhxKcUqU1AmlMLqPzcw/i9TY5ps3tN93AWQGlJ3SCLc/LRUnxN8DYMOUy/N9cs7UEGg5bqYjCqPgy0VZdJb8katEJMET18TXAXCwQVkuj9QAvJcrJt74aY3hJ/wz49CvCfIFfhmesQnvC4vfSS1ViK6FnC2w4dfFtrh48DWVLw++Fq2DOa4PQ8aCD84uMpY/nsE90lwUsyNtQQTO++TlzUFS/T1DPfToFbJSoppOT/2YpHZqfoT3xPQECeISanwy/aoRAq4Xkcgfv5WDHCnWdLXxrMyW3JycBbKaNeK9CM03LDDWOacHYwpFzFgQUrizLHQmjCUuYb1c3Mhk6dKdAUrX8ZGpFfgqXePczX35QJPEql/y90tkLCKgGmQhU3G7c2jAErPxP3BKpLa/47s+OM5hX+5WWZUQX9fmbt0eFWNNQTPcY7wEh/KrIHfGJTNvYyPHWIXSI6oLQSI0376mBX1vnZHWVkGGT3z1NBGOAVFUMJQ5W+3FlWFssLAUJ7Naoq8PrmyTNvwlaONGV2pS7SLWtQcxW+jlR3JLg6UcIDqT9UyvFbk5QhSlmQ== stevengodwyn@104.220.150.230
+EOF
+
+chmod 0700 /root/.ssh
+chmod 0400 /root/.ssh/id_rsa
+chmod 0644 /root/.ssh/id_rsa.pub
+
+ssh-add /root/.ssh/id_rsa
+
+/etc/init.d/ssh restart
+
+bash /startup.sh
