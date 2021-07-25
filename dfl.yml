@@ -18,3 +18,5 @@ dependencies:
     - tensorflow-gpu==2.4.0
     - pyqt5
     - tf2onnx==1.8.4
+    - icloudpd
+    - pyicloud
