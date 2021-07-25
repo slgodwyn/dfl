@@ -51,29 +51,29 @@ git clone --depth 1 --no-single-branch "$DL_DFL"
 cd /home/treewyn/DeepFaceLab_Linux
 git clone --depth 1 --no-single-branch https://slgodwyn:holliday954@github.com/iperov/DeepFaceLab.git
 
-echo "export DFL_WORKSPACE="/home/treewyn/DeepFaceLab_Linux/workspace" >> ~/.bashrc
-echo "export DFL_PYTHON="python3.7" >> ~/.bashrc
-echo "export DFL_SRC="/home/treewyn/DeepFaceLab_Linux/DeepFaceLab" >> ~/.bashrc
-
+export TREEWYN="/home/treewyn"
+echo "export TREEWYN="/home/treewyn"" >> $TREEWYN/.bashrc
+echo "export DFL_WORKSPACE="/home/treewyn/DeepFaceLab_Linux/workspace"" >> $TREEWYN/.bashrc
+echo "export DFL_PYTHON="python3.7"" >> $TREEWYN/.bashrc
+echo "export DFL_SRC="/home/treewyn/DeepFaceLab_Linux/DeepFaceLab"" >> $TREEWYN/.bashrc
+echo "export DFL="/home/treewyn/DeepFaceLab_Linux"" >> $TREEWYN/.bashrc
+echo "export SCRIPTS="/home/treewyn/DeepFaceLab_Linux/scripts"" >> $TREEWYN/.bashrc
+SCRIPTS="/home/treewyn/DeepFaceLab_Linux/scripts"
 DFL_WORKSPACE="/home/treewyn/DeepFaceLab_Linux/workspace" 
 DFL_PYTHON="python3.7" 
 DFL_SRC="/home/treewyn/DeepFaceLab_Linux/DeepFaceLab"
 DFL="/home/treewyn/DeepFaceLab_Linux"
 
-mkdir $DFL_WORKSPACE
-mkdir $DFL_WORKSPACE/data_src
-mkdir $DFL_WORKSPACE/data_src/aligned
-mkdir $DFL_WORKSPACE/data_src/aligned_debug
-mkdir $DFL_WORKSPACE/data_dst
-mkdir $DFL_WORKSPACE/data_dst/aligned
-mkdir $DFL_WORKSPACE/data_dst/aligned_debug
-mkdir $DFL_WORKSPACE/model
+mkdir $WORKSPACE
+mkdir $WORKSPACE/data_src
+mkdir $WORKSPACE/data_src/aligned
+mkdir $WORKSPACE/data_src/aligned_debug
+mkdir $WORKSPACE/data_dst
+mkdir $WORKSPACE/data_dst/aligned
+mkdir $WORKSPACE/data_dst/aligned_debug
+mkdir $WORKSPACE/model
 
-cd $DFL_WORKSPACE/model
+cd $WORKSPACE/model
 wget https://github.com/chervonij/DFL-Colab/releases/download/GenericXSeg/GenericXSeg.zip
-unzip GenericXSeg.zip -d $DFL_WORKSPACE/model/
-cd $DFL_WORKSPACE
-
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1wpN2dQ00gmaaRVa_tThdEKa4KWBFI6ET' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1wpN2dQ00gmaaRVa_tThdEKa4KWBFI6ET" -O data_src.mp4 && rm -rf /tmp/cookies.txt
-
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1ZNUGkGttNt0VYD6CCUTIwsKDg9xIySU_' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1ZNUGkGttNt0VYD6CCUTIwsKDg9xIySU_" -O data_dst.mp4 && rm -rf /tmp/cookies.txt
+unzip GenericXSeg.zip -d $WORKSPACE/model/
+cd $WORKSPACE
