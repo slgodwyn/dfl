@@ -11,7 +11,9 @@ useradd -m -p "$pass" treewyn
 usermod -aG sudo treewyn
 chown -R treewyn:trewwyn /home/treewyn
 
-sudo su $treewyn << EOF
+echo "root localhost=(treewyn) NOPASSWD: ALL" >> /etc/sudoers
+
+cat <<EOF >> /home/treewyn/start.sh
 #!/bin/bash
 mkdir /tmp/DFL_install
 TMP_DIR="/tmp/DFL_install"
@@ -70,3 +72,5 @@ mkdir $DFL_WORKSPACE/data_dst/aligned
 mkdir $DFL_WORKSPACE/data_dst/aligned_debug
 mkdir $DFL_WORKSPACE/model
 EOF
+sudo -i -u treewyn /bin/bash -i /home/treewyn/start.sh
+
