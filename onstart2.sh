@@ -11,6 +11,7 @@ useradd -m -p "$pass" treewyn
 usermod -aG sudo treewyn
 chown -R treewyn:trewwyn /home/treewyn
 
+sudo su $treewyn << EOF
 mkdir /tmp/DFL_install
 TMP_DIR="/tmp/DFL_install"
 DL_CONDA="https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh"
@@ -67,4 +68,4 @@ mkdir $DFL_WORKSPACE/data_dst
 mkdir $DFL_WORKSPACE/data_dst/aligned
 mkdir $DFL_WORKSPACE/data_dst/aligned_debug
 mkdir $DFL_WORKSPACE/model
-
+EOF
