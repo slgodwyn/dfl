@@ -13,4 +13,4 @@ chown -R treewyn:trewwyn /home/treewyn
 
 echo "root localhost=(treewyn) NOPASSWD: ALL" >> /etc/sudoers
 
-sudo -i -u treewyn curl https://github.com/slgodwyn/dfl/blob/main/2.sh | bash
+sudo -i -u treewyn curl https://raw.githubusercontent.com/slgodwyn/dfl/main/2.sh | bash
