@@ -9,7 +9,7 @@ apt-get install -y unzip
 pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)
 useradd -m -p "$pass" treewyn
 usermod -aG sudo treewyn
-chown -R treewyn:trewwyn /home/treewyn
+chown -R treewyn:treewyn /home/treewyn
 
 echo "root localhost=(treewyn) NOPASSWD: ALL" >> /etc/sudoers
 
