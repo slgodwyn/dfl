@@ -88,7 +88,8 @@ echo "downloading latest Anaconda3 installation script"
 mkdir /tmp/DFL_install
 TMP_DIR="/tmp/DFL_install"
 DL_CONDA="https://repo.anaconda.com/archive/Anaconda3-2021.07-Linux-x86_64.sh"
-DL_DFL="https://slgodwyn:holliday954@github.com/nagadit/DeepFaceLab_Linux.git"
+DL_DFL="https://slgodwyn:holliday954@github.com/slgodwyn/DeepFaceLab.git"
+DL_DFLL="https://slgodwyn:holliday954@github.com/slgodwyn/DeepFaceLab_Linux.git"
 CONDA_PATHS=("/opt" "/root")
 CONDA_NAMES=("/ana" "/mini")
 CONDA_VERSIONS=("3" "2")
@@ -111,9 +112,9 @@ $CONDA_EXECUTABLE init bash
 source /root/.bashrc
 
 cd /root
-git clone --depth 1 --no-single-branch "$DL_DFL"
+git clone --depth 1 --no-single-branch "$DL_DFLL"
 cd /root/DeepFaceLab_Linux
-git clone --depth 1 --no-single-branch https://github.com/slgodwyn/DeepFaceLab.git
+git clone --depth 1 --no-single-branch "$DL_DFL"
 curl https://raw.githubusercontent.com/slgodwyn/dfl/main/dfl.yml -o /root/dfl.yml
 conda env create -f /root/dfl.yml
 
