@@ -147,6 +147,8 @@ fi
 
 cat << EOF > /root/.vnc/xstartup
 #!/bin/sh
+export QT_PLUGIN_PATH="/root/anaconda/pkgs/qt-5.9.7-h5867ecd_1/plugins"
+
 xrdb /root/.Xresources
 dbus-launch startxfce4 &
 EOF 
@@ -173,10 +175,11 @@ if [ -f /usr/sbin ]; then
 else 
     apt install -y net-tools
     ifconfig
+fi
 
 cd /root/Desktop
-wget https://download.qt.io/new_archive/qt/5.7/5.7.0/qt-opensource-linux-x64-5.7.0.run
-chmod +x qt-opensource-linux-x64-5.7.0.run
+wget https://d13lb3tujbc8s0.cloudfront.net/onlineinstallers/qt-unified-linux-x64-4.1.1-online.run
+chmod +x qt-unified-linux-x64-4.1.1-online.run
 echo "run in xfce4-terminal on vnc display: {$~ sh qt-opensource-linux-x64-5.7.0.run}
 cat << EOF > next.txt
 Next Step:
