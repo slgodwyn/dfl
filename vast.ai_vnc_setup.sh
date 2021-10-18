@@ -1,11 +1,11 @@
 #!/bin/bash
 
 echo "Run as root or press ctrl+c to abort"
-echo "............................................................"
-echo "........................................."
-echo "......................"
-echo "......."
-echo "."
+echo -t 1 "............................................................"
+echo -t 1 "........................................."
+echo -t 1 "......................"
+echo -t 1  "......."
+echo -t 1 "."
 echo "Proceeding with update, xfce4 desktop installation and VNC server configuration"
 
 apt-get update -y
@@ -136,17 +136,22 @@ mkdir $DFL_WORKSPACE/data_dst/aligned
 mkdir $DFL_WORKSPACE/data_dst/aligned_debug
 mkdir $DFL_WORKSPACE/model
 
-vncserver
-vncserver -kill :1
+if [ -d ~/.vnc ] 
+then
+    echo "writing xstartup"
+else 
+    mkdir ~/.vnc
+fi
 
 if [ -f ~/.vnc/xstartup ] 
 then
     rm ~/.vnc.xstartup
+    touch ~/.vnc/xstartup
 else 
     echo "writing xstartup"
 fi
 
-cat << EOF > ~/.vnc/xstartup
+cat << EOF >> ~/.vnc/xstartup
 #!/bin/sh
 exec /etc/vnc/xstartup
 xrdb $HOME/.Xresources
@@ -156,7 +161,7 @@ EOF
 
 mkdir -p /etc/vncserver
 touch /etc/vncserver/vncservers.conf
-cat << EOF > /etc/vncserver/vncservers.conf
+cat << EOF >> /etc/vncserver/vncservers.conf
 VNCSERVERS="1:root"
 VNCSERVERARGS[1]="-geometry 1440x900 -depth 24"
 EOF
@@ -171,7 +176,7 @@ echo "PermitOpen any" >> /etc/ssh/sshd_config
 
 vncserver -geometry 900x600 -depth 24 :1
 
-cat << EOF > next.txt
+cat << EOF >> next.txt
 Next Step:
 start ssh tunnel on host with cmd: ssh -L 5901:172.17.0.2:5901 -C -N -l USER YOUR_SERVER_IP
 connect on 127.0.0.1:5901 with authentication set to vncpasswd
